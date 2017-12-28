@@ -1,0 +1,8 @@
+<p>
+	<!-- stars的值如果为true,显示空心星,为false显示实心星 -->
+	<span *ngFor="let star of stars; let i=index;" class="glyphicon glyphicon-star glyphicon-star"
+	[class.glyphicon-star-empty]="star" (click)="clickStar(i)"></span>
+	<!-- 平均星级评价最多两位小数 -->
+	<span>{{rating | number:'1.0-2'}}星</span>
+	<!-- <span class="glyphicon glyphicon-star glyphicon-star-empty"></span> -->
+</p>

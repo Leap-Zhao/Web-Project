@@ -1,0 +1,28 @@
+<!-- 商品搜索的输入框 -->
+<div class="row">
+	<div class="col-sm-12">
+		<div class="form-group">
+			<!-- 用formControl将titleFilter与后台绑定 -->
+			<input type="text" class="form-control" placeholder="请输入商品名称" [formControl]="titleFilter" >
+		</div>
+	</div>
+</div>
+<!-- *ngFor是angular指令,用于循环组中的对象 -->
+<!-- filter过滤器:用商品的名称title来匹配用户输入的关键字keyword -->
+<div *ngFor="let product of products | filter:'title':keyword" class="col-md-4 col-sm-4 col-lg-4">
+	<div class="thumbnail">
+		<!-- 商品图片 -->
+		<img src="{{product.imgSrc}}" alt="hello">
+		<!-- 商品详情 -->
+		<div class="caption">
+			<h4 class="pull-right">{{product.price}}元</h4>
+			<!-- 给商品标题product.title增加路由链接 -->
+			<h4><a [routerLink]="['/product',product.id]">{{product.title}}</a></h4>
+			<p>{{product.desc}}</p>
+		</div>
+		<div>
+			<!-- 星级组件的rating属性应该由product.rating传过去 -->
+			<app-stars [rating]="product.rating"></app-stars>
+		</div>
+	</div>
+</div>
